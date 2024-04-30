@@ -4,13 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository(AppDbContext db) : IProductRepository
     {
-        private readonly AppDbContext _db;
-        public ProductRepository(AppDbContext db)
-        {
-            _db = db;
-        }
+        private readonly AppDbContext _db = db;
 
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrandAsync()
         {

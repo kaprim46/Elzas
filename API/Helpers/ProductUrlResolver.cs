@@ -4,13 +4,9 @@ using Core.Entities;
 
 namespace API.Helpers
 {
-    public class ProductUrlResolver : IValueResolver<Product, ProductToReturnDto, string>
+    public class ProductUrlResolver(IConfiguration config) : IValueResolver<Product, ProductToReturnDto, string>
     {
-        private readonly IConfiguration _config;
-        public ProductUrlResolver(IConfiguration config)
-        {
-            _config = config;
-        }
+        private readonly IConfiguration _config = config;
 
         public string Resolve(Product source, ProductToReturnDto destination, string destMember, ResolutionContext context)
         {

@@ -5,14 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T>(AppDbContext db) : IGenericRepository<T> where T : BaseEntity
     {
-        private readonly AppDbContext _db;
-        public GenericRepository(AppDbContext db)
-        {
-            _db = db;
+        private readonly AppDbContext _db = db;
 
-        }
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _db.Set<T>().ToListAsync();
@@ -31,6 +27,11 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).ToListAsync();
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
         }
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
