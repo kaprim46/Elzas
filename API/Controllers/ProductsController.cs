@@ -34,7 +34,7 @@ namespace API.Controllers
 
             return Ok(new Pagination<ProductToReturnDto>
                     (productParams.PageIndex, 
-                    productParams.PageIndex,
+                    productParams.PageSize,
                     totalItems, data));
         }
         [HttpGet("{id}")]
