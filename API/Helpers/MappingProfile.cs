@@ -20,6 +20,9 @@ namespace API.Helpers
                .MapFrom<ProductUrlResolver>());
             
             CreateMap<Address, AddressDto>().ReverseMap();
+
+            CreateMap<CustomerBasketDto, CustomerBasket>();
+            CreateMap<BasketItemDto, BasketItem>();
         }
     }
 }
