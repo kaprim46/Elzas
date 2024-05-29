@@ -13,8 +13,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CheckoutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
