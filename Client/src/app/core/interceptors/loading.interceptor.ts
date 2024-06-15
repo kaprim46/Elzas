@@ -15,6 +15,7 @@ export class LoadingInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.url.includes('emailExists') ||
+       request.method === 'DELETE' ||
        request.method == 'POST' && request.url.includes('orders')){  //disable loading in email input and use local spinner
         return next.handle(request);
     }

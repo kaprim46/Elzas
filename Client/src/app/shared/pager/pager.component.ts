@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PagerComponent {
   @Input() pageSize?: number;
   @Input() totalCount?: number;
+  @Input() pageNumber?: number;
   @Output() pagedChanged = new EventEmitter<number>();
 
   onPagerCahnged(event: any){
